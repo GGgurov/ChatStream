@@ -5,78 +5,55 @@
     <title>Stream Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body, html {
+        body {
             margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
             background: #080808;
             font-family: 'Unbounded', sans-serif;
-            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
         }
-
         .container {
             display: grid;
-            /* Делим экран на 3 равные колонки */
-            grid-template-columns: 1fr 1fr 1fr;
-            height: 100vh;
-            gap: 10px;
-            padding: 10px;
-            box-sizing: border-box;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
         }
-
-        .panel {
-            background: rgba(255, 255, 255, 0.03);
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
+            padding: 30px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
         }
-
-        .panel-header {
-            padding: 8px 15px;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 11px;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            background: rgba(0, 0, 0, 0.2);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
         }
-
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            flex-grow: 1;
-            /* Инверсия цветов для донатов, если фон белый (опционально) */
-            /* filter: invert(0.9) hue-rotate(180deg); */
-        }
+        h2 { font-size: 18px; margin: 0; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- Twitch Chat -->
-    <div class="panel">
-        <div class="panel-header">Twitch</div>
-        <iframe src="https://www.twitch.tv/popout/elgurov/chat"></iframe>
-    </div>
+    <a href="https://www.twitch.tv/popout/elgurov/chat" target="_blank" class="glass-card">
+        <h2>TWITCH CHAT</h2>
+    </a>
 
-    <!-- TikTok Activity Feed -->
-    <div class="panel">
-        <div class="panel-header">TikTok Feed</div>
-        <iframe src="https://tikfinity.zerody.one/widget/activity-feed?cid=2916765&did=1"></iframe>
-    </div>
+    <a href="https://tikfinity.zerody.one/widget/activity-feed?cid=2916765&did=1" target="_blank" class="glass-card">
+        <h2>TIKTOK FEED</h2>
+    </a>
 
-    <!-- Donation Alerts List -->
-    <div class="panel">
-        <div class="panel-header">Recent Donations</div>
-        <iframe src="https://www.donationalerts.com/widget/lastdonations?alert_type=1,4,6,8,7,10,9,3,2,5,11,12,13,14,15,16,17,19,20,27,28,29,30,31,32,33,34,35,36&limit=100"></iframe>
-    </div>
+    <a href="https://www.donationalerts.com/widget/lastdonations?alert_type=1,4,6,8,7,10,9,3,2,5,11,12,13,14,15,16,17,19,20,27,28,29,30,31,32,33,34,35,36&limit=100" target="_blank" class="glass-card">
+        <h2>DONATIONS</h2>
+    </a>
 </div>
 
 </body>
