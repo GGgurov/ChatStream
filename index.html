@@ -1,60 +1,38 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Stream Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            margin: 0;
-            background: #080808;
-            font-family: 'Unbounded', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: white;
-        }
-        .container {
+        body, html { margin: 0; padding: 0; height: 100%; background: #000; }
+        
+        .layout {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            padding: 20px;
+            grid-template-columns: 1fr 1fr; /* 2 колонки сверху */
+            grid-template-rows: 1fr 150px;  /* 150px высота для донатов снизу */
+            height: 100vh;
         }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            padding: 30px;
-            border-radius: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            transition: 0.3s;
-            cursor: pointer;
-            text-decoration: none;
-            color: white;
-        }
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-5px);
-        }
-        h2 { font-size: 18px; margin: 0; }
+
+        .chat-left { grid-column: 1 / 2; grid-row: 1 / 2; }
+        .chat-right { grid-column: 2 / 3; grid-row: 1 / 2; }
+        .donations { grid-column: 1 / 3; grid-row: 2 / 3; border-top: 2px solid #333; }
+
+        iframe { width: 100%; height: 100%; border: none; }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <a href="https://www.twitch.tv/popout/elgurov/chat" target="_blank" class="glass-card">
-        <h2>TWITCH CHAT</h2>
-    </a>
-
-    <a href="https://tikfinity.zerody.one/widget/activity-feed?cid=2916765&did=1" target="_blank" class="glass-card">
-        <h2>TIKTOK FEED</h2>
-    </a>
-
-    <a href="https://www.donationalerts.com/widget/lastdonations?alert_type=1,4,6,8,7,10,9,3,2,5,11,12,13,14,15,16,17,19,20,27,28,29,30,31,32,33,34,35,36&limit=100" target="_blank" class="glass-card">
-        <h2>DONATIONS</h2>
-    </a>
-</div>
-
+    <div class="layout">
+        <!-- Твич слева -->
+        <div class="chat-left">
+            <iframe src="https://www.twitch.tv/popout/elgurov/chat"></iframe>
+        </div>
+        <!-- ТикТок справа -->
+        <div class="chat-right">
+            <iframe src="https://tikfinity.zerody.one/widget/activity-feed?cid=2916765&did=1"></iframe>
+        </div>
+        <!-- Донаты внизу на всю ширину -->
+        <div class="donations">
+            <iframe src="https://www.donationalerts.com/widget/lastdonations?limit=100"></iframe>
+        </div>
+    </div>
 </body>
 </html>
